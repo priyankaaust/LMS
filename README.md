@@ -27,3 +27,9 @@ loan processing.
 4. Validate behavior with State Machine diagrams for Loan objects. 
 5. Generate Java/Python code skeletons from Class diagrams. 
 6. Implement core CRUD operations and simple console/UI views. 
+
+### 5. Development Preference:
+1. Backend (Express.js + MongoDB)
+2. Frontend React
+3. RESTful API
+4. JWT Authentication
