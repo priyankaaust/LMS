@@ -160,14 +160,14 @@ function Books() {
           {filteredBooks.map(book => (
             <div key={book._id} className="book-card">
               {book.coverImageUrl && (
-                <img src={`http://localhost:3000${book.coverImageUrl}`} alt="cover" />
+                <img src={`http://localhost:5000${book.coverImageUrl}`} alt="cover" />
               )}
               <h4>{book.title}</h4>
               <p><strong>Author:</strong> {book.author}</p>
               <p><strong>Genre:</strong> {book.genre}</p>
               <p><strong>ISBN:</strong> {book.isbn}</p>
               {book.digitalFileUrl && (
-                <a href={`http://localhost:3000${book.digitalFileUrl}`} target="_blank" rel="noreferrer">
+                <a href={`http://localhost:5000${book.digitalFileUrl}`} target="_blank" rel="noreferrer">
                   📄 Download File
                 </a>
               )}
