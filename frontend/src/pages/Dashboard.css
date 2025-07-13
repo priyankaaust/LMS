@@ -1,0 +1,30 @@
+.user-dashboard {
+  padding: 40px;
+  text-align: center;
+}
+
+.user-dashboard h1 {
+  margin-bottom: 30px;
+}
+
+.user-menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-menu button {
+  padding: 15px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.user-menu button:hover {
+  background-color: #e0e0e0;
+  color: #007bff;
+}

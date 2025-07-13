@@ -1,4 +1,4 @@
-Class: User
+# Class: User
 - userId: String
 - name: String
 - email: String
@@ -8,7 +8,7 @@ Class: User
 - login()
 - logout()
 
-Class: Book
+# Class: Book
 - bookId: String
 - title: String
 - isbn: String
@@ -16,11 +16,13 @@ Class: Book
 - genre: String
 - coverImageUrl: String
 - digitalFileUrl: String
+- totalCopies: Number
+- availableCopies: Number
 - addBook()
 - editBook()
 - deleteBook()
 
-Class: LendingTransaction
+# Class: LendingTransaction
 - transactionId: String
 - book: Book
 - user: User
@@ -32,7 +34,7 @@ Class: LendingTransaction
 - returnBook()
 - calculateFine()
 
-Class: Reservation
+# Class: Reservation
 - reservationId: String
 - book: Book
 - user: User
@@ -41,14 +43,14 @@ Class: Reservation
 - notifyUser()
 - cancelReservation()
 
-Class: Notification
+# Class: Notification
 - notificationId: String
 - user: User
 - message: String
 - dateSent: Date
 - send()
 
-Relationships:
+# sRelationships:
 - User "1" --- "many" LendingTransaction (A user can have many lending transactions)
 - Book "1" --- "many" LendingTransaction (A book can be lent many times)
 - User "1" --- "many" Reservation (A user can have many reservations)

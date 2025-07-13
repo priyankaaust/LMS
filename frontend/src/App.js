@@ -4,7 +4,12 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import UserLayout from './pages/UserLayout';
 import './App.css';
+import UserBooks from './pages/Books';
+import UserLoans from './pages/Loans';
+import UserReports from './pages/Reports';
+
 
 import AdminLayout from './admin/AdminLayout';
 import AdminDashboard from './admin/Dashboard';
@@ -26,6 +31,20 @@ function RequireAdmin({ children }) {
     return <Navigate to="/login" replace />;
   }
 }
+
+function RequireUser({ children }) {
+  const token = localStorage.getItem('token');
+  if (!token) return <Navigate to="/login" replace />;
+
+  try {
+    const decoded = JSON.parse(atob(token.split('.')[1]));
+    if (decoded.role === 'admin') return <Navigate to="/admin/dashboard" replace />;
+    return children;
+  } catch {
+    return <Navigate to="/login" replace />;
+  }
+}
+
 
 function App() {
   return (
@@ -57,6 +76,22 @@ function App() {
           <Route path="reports" element={<Reports />} />
           <Route index element={<Navigate to="dashboard" replace />} />
         </Route>
+
+        <Route
+          path="/dashboard"
+          element={
+            <RequireUser>
+              <UserLayout />
+            </RequireUser>
+          }
+        >
+          <Route path="dashboard" element={<Dashboard />} />  {/* 👈 NEW */}
+          <Route path="books" element={<UserBooks />} />
+          <Route path="loans" element={<UserLoans />} />
+          <Route path="reports" element={<UserReports />} />
+          <Route index element={<Navigate to="dashboard" replace />} />
+        </Route>
+
       </Routes>
     </Router>
   );
