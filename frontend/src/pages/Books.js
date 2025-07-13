@@ -18,6 +18,24 @@ function UserBooks() {
     fetchBooks();
   }, []);
 
+  const borrowBook = async (bookId) => {
+    const token = localStorage.getItem('token');
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 14); // default due in 2 weeks
+  
+    try {
+      await API.post('/loans/borrow', { bookId, dueDate }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert('Book borrowed!');
+    } catch (err) {
+      console.error('Borrow error:', err);
+      alert(err.response?.data?.error || 'Error borrowing book');
+    }
+  };
+  
+  
+
   return (
     <div className="user-books-page">
       <h2>📚 Available Books</h2>
@@ -29,8 +47,8 @@ function UserBooks() {
             <p><strong>Author:</strong> {book.author}</p>
             <p><strong>Genre:</strong> {book.genre}</p>
             <p><strong>Available:</strong> {book.availableCopies} / {book.totalCopies}</p>
-            <button>📖 Borrow</button>
-          </div>
+            <button onClick={() => borrowBook(book._id)}>📖 Borrow</button>
+            </div>
         ))}
       </div>
     </div>

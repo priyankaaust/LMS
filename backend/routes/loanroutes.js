@@ -21,15 +21,17 @@ const auth = require('../middleware/authMiddleware');
 module.exports = router;
 
 /* Issue a book */
-router.post('/issue', async (req, res) => {
+router.post('/borrow', auth, async (req, res) => {
   try {
-    const { userId, bookId, dueDate } = req.body;
+    const userId = req.user.id; // use from decoded token
+    const { bookId, dueDate } = req.body;
     const txn = await LendingTransaction.issueBook(userId, bookId, new Date(dueDate));
     res.status(201).json(txn);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 });
+
 
 /* Return a book */
 router.put('/return/:id', async (req, res) => {

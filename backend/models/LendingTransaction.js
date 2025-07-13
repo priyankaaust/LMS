@@ -1,6 +1,8 @@
 /* models/LendingTransaction.js ------------------------------------------- */
 const mongoose = require('mongoose');
 const Decimal = mongoose.Schema.Types.Decimal128;
+const { Types } = mongoose; // ✅ add this line
+
 
 /* ─────────────────────────  Schema Definition  ────────────────────────── */
 const lendingTransactionSchema = new mongoose.Schema(
@@ -73,7 +75,7 @@ lendingTransactionSchema.methods.calculateFine = function () {
  */
 lendingTransactionSchema.statics.issueBook = function (userId, bookId, dueDate) {
   const txn = new this({
-    transactionId: mongoose.Types.ObjectId().toString(),
+    transactionId: new Types.ObjectId().toString(), // ✅ use new
     user: userId,
     book: bookId,
     dueDate
