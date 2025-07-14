@@ -15,10 +15,14 @@ app.use(express.json());
 const authRoutes = require('./routes/auth.routes');
 const bookRoutes = require('./routes/bookRoutes');
 const loanRoutes = require('./routes/loanroutes');
+const userRoutes = require('./routes/auth.routes'); // using same file for user logic
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/loans', loanRoutes);
+app.use('/api/users', userRoutes); // mount under /api/users
+
 
 // ✅ Static uploads folder
 app.use('/uploads', express.static('uploads'));

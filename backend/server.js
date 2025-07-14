@@ -23,6 +23,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/books', bookRoutes);
 app.use('/api/loans', loanRoutes);
 app.use('/api/auth', userRoutes); // ✅ Fixed mount point here
+app.use('/api/users', userRoutes);
 
 // Create admin user if not exists
 async function createAdminUser() {
@@ -50,3 +51,5 @@ mongoose.connect(process.env.MONGO_URI)
     });
   })
   .catch((err) => console.error('Mongo connection failed:', err));
+
+

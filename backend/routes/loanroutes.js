@@ -4,30 +4,35 @@ const router = express.Router();
 const LendingTransaction = require('../models/LendingTransaction');
 const auth = require('../middleware/authMiddleware');
 
-// Admin-only: Get all loans
-// router.get('/', auth, async (req, res) => {
-//   if (req.user.role !== 'admin') {
-//     return res.status(403).json({ error: 'Access denied' });
-//   }
+/* Admin-only: Get all loans*/
+router.get('/', auth, async (req, res) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
 
-//   const loans = await LendingTransaction.find()
-//     .populate('book')
-//     .populate('user')
-//     .sort({ issueDate: -1 });
+  const loans = await LendingTransaction.find()
+    .populate('book')
+    .populate('user')
+    .sort({ issueDate: -1 });
 
-//   res.json(loans);
-// });
+  res.json(loans);
+});
 
-module.exports = router;
+
 
 /* Issue a book */
 router.post('/borrow', auth, async (req, res) => {
   try {
+    console.log('✅ Hit /borrow route');
+    console.log('User:', req.user);
+    console.log('Body:', req.body);
+
     const userId = req.user.id; // use from decoded token
     const { bookId, dueDate } = req.body;
     const txn = await LendingTransaction.issueBook(userId, bookId, new Date(dueDate));
     res.status(201).json(txn);
-  } catch (err) {
+  }catch (err) {
+    console.error('❌ Error in /borrow:', err); // <-- Add this line
     res.status(400).json({ error: err.message });
   }
 });
@@ -54,3 +59,4 @@ router.get('/my', auth, async (req, res) => {
   res.json(loans);
 });
 
+module.exports = router;

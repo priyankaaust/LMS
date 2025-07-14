@@ -30,7 +30,7 @@ function Dashboard() {
     <div className="page-container">
       <h2>📖 Library Dashboard</h2>
       {/* <p>{decoded.username}</p> */}
-      <h2>📋 Welcome {decoded.username + data}</h2>
+      <h2>📋 Welcome {decoded.username}</h2>
       <div className="user-menu">
       <Link to="/dashboard/books"><button>📘 My Books</button></Link>
       <Link to="/dashboard/loans"><button>🔁 My Loans</button></Link>
