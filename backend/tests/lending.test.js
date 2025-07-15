@@ -20,6 +20,7 @@ beforeEach(async () => {
   // 2️⃣ Login for token
   const loginRes = await request(app).post('/api/auth/login').send({ username, password });
   memberToken = loginRes.body.token;
+  console.log("token" + memberToken);
 
   // 3️⃣ Ensure test book exists
   let book = await Book.findOne({ bookId: 'B2' });

@@ -94,6 +94,7 @@ function Books() {
       isbn: book.isbn,
       author: book.author,
       genre: book.genre,
+      totalCopies: book.totalCopies,
       coverImage: null, // User can upload a new image to replace
       digitalFile: null  // User can upload a new file to replace
     });
