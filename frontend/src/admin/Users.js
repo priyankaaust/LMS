@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import API from '../api';
 import './AdminUsers.css';
+import './Books.css'
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -49,57 +50,66 @@ function AdminUsers() {
   };
 
   return (
-    <div className="page-container">
-      <h2>👥 User Management</h2>
+    <div className="book-container">
+      <div className="admin-panel-layout">
+      
+        {/* 👉 Left Panel: Create User Form */}
+        <div className="book-form-panel">
 
-      {/* ✅ New User Form */}
-      <form className="create-user-form" onSubmit={createUser}>
-        <input
-          placeholder="Username"
-          required
-          value={newUser.username}
-          onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
-        />
-        <input
-          placeholder="Password"
-          required
-          type="password"
-          value={newUser.password}
-          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-        />
-        <select
-          value={newUser.role}
-          onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-        >
-          <option value="member">Member</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button type="submit">➕ Create</button>
-      </form>
-
-      <table className="user-table">
-        <thead>
-          <tr><th>Username</th><th>Role</th><th>Last Login</th><th>Actions</th></tr>
-        </thead>
-        <tbody>
-          {users.map(u => (
-            <tr key={u._id}>
-              <td>{u.username}</td>
-              <td>{u.role}</td>
-              <td>{u.lastLogin ? new Date(u.lastLogin).toLocaleString() : '—'}</td>
-              <td className="action-buttons">
-                <button onClick={() => toggleRole(u)}>
-                  {u.role === 'admin' ? 'Make Member' : 'Make Admin'}
-                </button>
-                <button onClick={() => resetPass(u._id)}>Reset PW</button>
-                <button onClick={() => deleteUser(u._id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <h3>Create New User</h3>
+          <form className="create-user-form" onSubmit={createUser}>
+            <input
+              placeholder="Username"
+              required
+              value={newUser.username}
+              onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+            />
+            <input
+              placeholder="Password"
+              required
+              type="password"
+              value={newUser.password}
+              onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+            />
+            <select
+              value={newUser.role}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+            >
+              <option value="member">Member</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button type="submit">➕ Create</button>
+          </form>
+        </div>
+  
+        {/* 👉 Right Panel: User List */}
+        <div className="book-list-panel">
+          <h3>All Users</h3>
+          <table className="user-table">
+            <thead>
+              <tr><th>Username</th><th>Role</th><th>Last Login</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              {users.map(u => (
+                <tr key={u._id}>
+                  <td>{u.username}</td>
+                  <td>{u.role}</td>
+                  <td>{u.lastLogin ? new Date(u.lastLogin).toLocaleString() : '—'}</td>
+                  <td className="action-buttons">
+                    <button onClick={() => toggleRole(u)}>
+                      {u.role === 'admin' ? 'Make Member' : 'Make Admin'}
+                    </button>
+                    {/* <button onClick={() => resetPass(u._id)}>Reset PW</button> */}
+                    <button onClick={() => deleteUser(u._id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  );
+  );  
 }
 
 export default AdminUsers;

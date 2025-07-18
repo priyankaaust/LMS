@@ -33,7 +33,7 @@ This document outlines the strategy and scope for unit testing the **Library Man
 | 📚 **Books API** (`bookRoutes.js`)             | ✅ Create book with files✅ Get all books✅ Input validations                              |
 | 🔁 **Lending Logic** (`LendingTransaction.js`) | ✅ Issue updates availability✅ Return updates and calculates fine✅ Prevent double return |
 | 📋 **Loan Routes** (`loanroutes.js`)           | ✅ Issue and return flows✅ Member loan history✅ Auth-protected endpoints                 |
-| 👥 **User Management** (`auth.routes.js`)      | ✅ Get user list✅ Toggle role✅ Reset password                                            |
+| 👥 **User Management** (`auth.routes.js`)      | ✅ Get user list✅ Toggle role                                            |
 
 ### 2. Frontend Unit Tests
 
@@ -85,6 +85,10 @@ npm test -- --coverage
 ```
 
 ### Frontend
+
+##  Setup for Frontend Testing
+
+npm install --save-dev @testing-library/react @testing-library/jest-dom jest
 
 ```bash
 cd frontend

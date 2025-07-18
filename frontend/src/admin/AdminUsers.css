@@ -45,3 +45,26 @@
   cursor: pointer;
 }
 
+.admin-panel-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.panel {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-panel {
+  max-width: 350px;
+}
+
+.table-panel {
+  flex: 2;
+  overflow-x: auto;
+}
+
