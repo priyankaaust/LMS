@@ -33,3 +33,8 @@ loan processing.
 2. Frontend React
 3. RESTful API
 4. JWT Authentication
+
+### 6. System Testing:
+https://www.loom.com/share/d5b8f7090e8f4120a4427d91e1acc9d7?sid=f9eaab5e-178f-42b0-b9b4-d05bbf7905aa
+
+[![Cypress Test Demo](https://cdn.loom.com/sessions/thumbnails/d5b8f7090e8f4120a4427d91e1acc9d7-00001.jpg)](https://www.loom.com/share/d5b8f7090e8f4120a4427d91e1acc9d7)

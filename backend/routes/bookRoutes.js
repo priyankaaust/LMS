@@ -25,8 +25,14 @@ router.post(
     try {
       const { bookId, title, isbn, author, genre, totalCopies } = req.body;
 
-      const coverImageUrl = req.files.coverImage ? `/uploads/${req.files.coverImage[0].filename}` : '';
-      const digitalFileUrl = req.files.digitalFile ? `/uploads/${req.files.digitalFile[0].filename}` : '';
+      // const coverImageUrl = req.files.coverImage ? `/uploads/${req.files.coverImage[0].filename}` : '';
+      // const digitalFileUrl = req.files.digitalFile ? `/uploads/${req.files.digitalFile[0].filename}` : '';
+
+      const coverImageUrl = req.files?.coverImage?.[0]?.filename ? `/uploads/${req.files.coverImage[0].filename}`: '';
+
+      const digitalFileUrl = req.files?.digitalFile?.[0]?.filename ? `/uploads/${req.files.digitalFile[0].filename}`: '';
+
+      console.log("ggggggggggggggggg");
 
       const book = new Book({
         bookId,

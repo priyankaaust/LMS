@@ -31,6 +31,7 @@ function AdminLoans() {
       await API.put(`/loans/return/${id}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      alert('Book returned successfully');
       fetchLoans(); // Refresh after return
     } catch (err) {
       alert(err.response?.data?.error || 'Error returning book');

@@ -41,11 +41,16 @@ router.post('/borrow', auth, async (req, res) => {
 /* Return a book */
 router.put('/return/:id', async (req, res) => {
   try {
+    console.log('✅ Hit /return route');
+    console.log('User:', req.params.id);
+
     const txn = await LendingTransaction.findById(req.params.id);
     if (!txn) return res.status(404).json({ error: 'Transaction not found' });
     const updated = await txn.returnBook();
+    console.log(updated);
     res.json(updated);
   } catch (err) {
+    console.log(err.message);
     res.status(400).json({ error: err.message });
   }
 });

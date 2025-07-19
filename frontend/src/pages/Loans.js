@@ -31,6 +31,7 @@ function UserLoans() {
       });
       alert('Book returned successfully');
       fetchLoans();
+      console.log('Book returned successfully');
     } catch (err) {
       console.error(err);
       alert('Error returning book');
