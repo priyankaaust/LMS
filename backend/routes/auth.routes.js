@@ -91,6 +91,12 @@ router.post('/create', auth, async (req, res) => {
   }
 
   const { username, password, role } = req.body;
+
+  // ✅ Check password length
+  if (!password || password.length < 4) {
+    return res.status(400).json({ error: 'Password must be at least 4 characters long' });
+  }
+
   try {
     const hashed = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashed, role });
