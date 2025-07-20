@@ -34,7 +34,100 @@ loan processing.
 3. RESTful API
 4. JWT Authentication
 
-### 6. System Testing:
+
+
+
+# 📚 Library Management System (Deployment Details)
+
+A full-stack Library Management System built with **Express.js**, **React.js**, and **MongoDB**.
+
+---
+
+## 🚀 Getting Started
+
+### 📦 Clone the Repository
+
+```bash
+git clone https://github.com/priyankaaust/LMS.git
+cd lms
+```
+
+---
+
+## ⚙️ Backend Setup
+
+### 📁 Location: `/backend`
+
+### 🛠️ Installation
+
+```bash
+cd backend
+npm install
+```
+
+### ▶️ Run Backend
+
+```bash
+npm run dev
+```
+
+---
+
+## 💻 Frontend Setup
+
+### 📁 Location: `/frontend`
+
+### 🛠️ Installation
+
+```bash
+cd ../frontend
+npm install
+```
+
+### ▶️ Run Frontend
+
+```bash
+npm start
+```
+
+---
+
+## 🧪 Running Tests
+
+### ✅ Unit Tests
+
+Run backend unit tests (if configured):
+
+```bash
+cd ../backend
+npm test
+```
+
+### 🧩 System Tests (Cypress E2E)
+
+```bash
+cd ../frontend
+npx cypress open
+```
+
+Or to run in CLI:
+
+```bash
+npx cypress run
+```
+
+Tests cover:
+- User login
+- Book borrow/return
+- Loan list validation
+
+---
+
+### System Testing video
 https://www.loom.com/share/d5b8f7090e8f4120a4427d91e1acc9d7?sid=f9eaab5e-178f-42b0-b9b4-d05bbf7905aa
 
-[![Cypress Test Demo](https://cdn.loom.com/sessions/thumbnails/d5b8f7090e8f4120a4427d91e1acc9d7-00001.jpg)](https://www.loom.com/share/d5b8f7090e8f4120a4427d91e1acc9d7)
+
+## 📬 Feedback
+
+Feel free to fork and contribute. Pull requests are welcome!
+
